@@ -57,7 +57,7 @@ router.post(`/`, (req, res) => {
                 .then(() => {
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     void fs.rename((file.fdata as any).filepath, path.resolve(`/usr/share/sharex/i`, fileName), () => {
-                        res.status(200).send(`https://${config.domain}/i/${fileName}`);
+                        res.status(200).send(`${config.domain}/i/${fileName}`);
                     });
                 }).catch(err => log(`red`, err));
         });
