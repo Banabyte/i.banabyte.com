@@ -57,7 +57,7 @@ router.get(`/`, (req, res) => {
             void media.save()
                 .then(() => {
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    void fs.rename((file.fdata as any).filepath, path.resolve(`/var/www/ShareX/i`, fileName), () => {
+                    void fs.rename((file.fdata as any).filepath, path.resolve(`/usr/share/sharex/i`, fileName), () => {
                         res.status(200).send(`https://${config.domain}/i/${fileName}`);
                     });
                 }).catch(err => log(`red`, err));
