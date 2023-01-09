@@ -16,7 +16,7 @@ import { string as randomString } from '../../../utils/randomizer';
 
 const router = Router();
 
-router.get(`/`, (req, res) => {
+router.post(`/`, (req, res) => {
     const form = new IncomingForm();
     form.parse(req, (err, fields: { key: string }, files) => {
         if (err !== undefined && err !== null) {
