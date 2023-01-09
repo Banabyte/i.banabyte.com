@@ -29,8 +29,7 @@ router.post(`/`, (req, res) => {
         }
 
         const authKey = fields.key;
-
-        if (fields.key === undefined) {
+        if (authKey === undefined) {
             res.status(400).send(`400 Bad Request`);
             return;
         }
@@ -47,7 +46,7 @@ router.post(`/`, (req, res) => {
                 created: new Date(),
                 id: createID(),
 
-                author: (req.user as any).id,
+                author: user.id,
 
                 name: randomString(5),
                 extension: path.parse((file.fdata as any).originalFilename).ext
