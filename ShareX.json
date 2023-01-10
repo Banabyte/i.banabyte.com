@@ -1,5 +1,4 @@
 {
-    "Version": "13.6.0",
     "Name": "Snippet",
     "DestinationType": "ImageUploader, FileUploader",
     "RequestMethod": "POST",
