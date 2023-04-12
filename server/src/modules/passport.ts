@@ -52,12 +52,10 @@ const discordStrategy = new DiscordStrategy({
             const userConfig = ExampleUserConfig;
             userConfig.Arguments.key = user.token;
 
-            fs.writeFileSync(`/usr/share/sharex/configs/${user.id}.sxcu`, JSON.stringify(userConfig), `utf-8`);
+            fs.writeFileSync(`/usr/share/sharex/configs/${user.id as string}.sxcu`, JSON.stringify(userConfig), `utf-8`);
 
-            void user.save((err) => {
-                if (err != null) return callback(err);
-                else return callback(err, user);
-            });
+            void user.save();
+            return callback(null, user);
         });
     });
 });

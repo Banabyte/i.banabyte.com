@@ -1,7 +1,7 @@
 {
     "env": {
         "node": true,
-        "es6": true
+        "es2022": true
     },
     "extends": [
         "plugin:@typescript-eslint/recommended",
@@ -21,8 +21,14 @@
         "@typescript-eslint/indent": ["error", 4, { "SwitchCase": 1 }],
         "@typescript-eslint/semi": [2, "always"],
         "@typescript-eslint/quotes": [2, "backtick", "avoid-escape"],
+        "no-use-before-define": 0,
+        "no-unused-vars": 0,
+        "@typescript-eslint/no-use-before-define": 2,
+        "@typescript-eslint/no-unused-vars": 2,
         "prefer-arrow-callback": 2,
         "prefer-template": 2,
-        "@typescript-eslint/curly": 0
+        "@typescript-eslint/curly": 0,
+        "@typescript-eslint/no-for-in-array": 0,
+        "@typescript-eslint/no-confusing-void-expression": 0
     }
 }
