@@ -3,7 +3,7 @@ Description=Custom Node.js ShareX server.
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/Snippet
+WorkingDirectory=/opt/Snippet/server
 ExecStart=/usr/bin/pnpm start
 
 [Install]

@@ -3,6 +3,3 @@ node_modules/
 
 # TypeScript build
 /dist
-
-# Environment variables
-.env
