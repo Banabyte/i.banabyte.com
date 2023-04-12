@@ -1,0 +1,10 @@
+[Unit]
+Description=Custom Node.js ShareX server.
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/Snippet
+ExecStart=/usr/bin/pnpm start
+
+[Install]
+WantedBy=multi-user.target
