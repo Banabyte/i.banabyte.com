@@ -20,7 +20,8 @@ const discordStrategy = new DiscordStrategy({
     callbackURL: `${config.baseURL}/auth/discord`,
     scope: [`identify`, `email`]
 }, (accessToken: string, refreshToken: string, profile: DiscordStrategy.Profile, callback: VerifyCallback) => {
-    if (profile.id !== `621645567478464514` && profile.id !== `386940319666667521`) return callback(new Error(`yo you can't sign in here!`));
+    if (!config.whitelistedIDs.includes(profile.id)) return callback(new Error(`yo you can't sign in here!`));
+
     void User.findOne({ discordID: profile.id }).then(userExists => {
         // Update profile data on login.
         if (userExists !== null) {

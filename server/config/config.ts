@@ -23,6 +23,12 @@ const config = {
     baseURL: argv.baseURL,
     port: argv.port,
 
+    whitelistedIDs: [
+        `386940319666667521`, // DamienVesper
+        `621645567478464514`, // Zeropoint
+        `522576501623750666` // Lapis
+    ],
+
     version
 };
 
