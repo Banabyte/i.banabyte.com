@@ -1,7 +1,7 @@
 
 <div align="center">
-    <h1>Snippet</h1>
-    <p>A custom screenshot uploader in Node.js.</p>
+    <h1>Banabyte Image Server</h1>
+    <p>A custom screenshot uploader for Banabyte.</p>
     <hr />
 </div>
 

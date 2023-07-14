@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LogoImg from '../assets/img/logos/favicon.png';
+import LogoImg from '../assets/img/logos/banabyte.png';
 
 class Logo extends React.Component {
     render = (): React.ReactNode => (

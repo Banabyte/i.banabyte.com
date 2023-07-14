@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 
-import Logo from '../../assets/img/logos/favicon.png';
+import Logo from '../../assets/img/logos/banabyte.png';
 
 declare const API_URL: string;
 
@@ -28,9 +28,9 @@ class Header extends React.Component<Record<string, never>, HeaderState> {
         <header>
             <nav className="navbar navbar-expand-lg tw-bg-[#00000040] navbar-dark">
                 <div className="container-fluid">
-                    <a href="/" className="navbar-brand">
+                    <a href="https://banabyte.com" className="navbar-brand">
                         <img className="tw-w-[30px] tw-mr-2 d-inline-block" src={Logo} />
-                        Snippet
+                        Banabyte
                     </a>
                     <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>

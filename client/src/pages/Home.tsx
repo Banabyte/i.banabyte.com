@@ -18,7 +18,7 @@ class Home extends React.Component<Record<string, never>, { isLoggedIn: boolean 
             <br />
             <br />
 
-            <h1 className="tw-text-6xl mt-5">Welcome to Snippet!</h1>
+            <h1 className="tw-text-6xl mt-5">Welcome to the Banabyte Image Server!</h1>
             <p className="desc tw-mt-4">
                 A simple screenshot uploader for all your sharing tasks.
             </p>
