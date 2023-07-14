@@ -14,6 +14,18 @@ import { Media } from '../../../models/media.model';
 import log from '../../../utils/log';
 import { string as randomString } from '../../../utils/randomizer';
 
+interface AssetFile {
+    lastModifiedDate: Date
+    filepath: string
+    newFilename: string
+    originalFilename: string
+    mimetype: string
+    hashAlgorithm: boolean
+    size: number
+    _writeStream: fs.WriteStream
+    hash: string | null
+}
+
 const router = Router();
 
 router.post(`/`, (req, res) => {
@@ -40,26 +52,30 @@ router.post(`/`, (req, res) => {
                 return;
             }
 
-            const file = ((files as unknown) as { fdata: File });
+            if (typeof files.fdata !== `object`) {
+                res.status(400).send(`400 Bad Request`);
+                return;
+            }
 
-            const media = new Media({
-                created: new Date(),
-                id: createID(),
+            for (const file of files.fdata as unknown as AssetFile[]) {
+                const media = new Media({
+                    created: new Date(),
+                    id: createID(),
 
-                author: user.id,
+                    author: user.id,
 
-                name: randomString(5),
-                extension: path.parse((file.fdata as any).originalFilename).ext
-            });
+                    name: randomString(5),
+                    extension: path.parse(file.originalFilename).ext
+                });
 
-            const fileName = `${media.name}${media.extension}`;
-            void media.save()
-                .then(() => {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    void fs.rename((file.fdata as any).filepath, path.resolve(`/usr/share/sharex/i`, fileName), () => {
-                        res.status(200).send(`${req.get(`host`) === `i.warzon.io` ? `https://i.warzon.io` : config.domain}/i/${fileName}`);
-                    });
-                }).catch(err => log(`red`, err));
+                const fileName = `${media.name}${media.extension}`;
+                void media.save()
+                    .then(() => {
+                        void fs.rename(file.filepath, path.resolve(`/usr/share/sharex/i`, fileName), () => {
+                            res.status(200).send(`${req.get(`host`) === `i.warzon.io` ? `https://i.warzon.io` : config.domain}/i/${fileName}`);
+                        });
+                    }).catch(err => log(`red`, err));
+            }
         });
     });
 });
