@@ -1,5 +1,5 @@
 import Mongoose from 'mongoose';
-import { Snowflake } from '@boatgame-io/id-utils';
+import { type Snowflake } from '@boatgame-io/id-utils';
 
 interface MediaDoc extends Mongoose.Document {
     created: Date
@@ -25,5 +25,5 @@ const Media = Mongoose.model<MediaDoc>(`Media`, MediaSchema);
 
 export {
     Media,
-    MediaDoc
+    type MediaDoc
 };

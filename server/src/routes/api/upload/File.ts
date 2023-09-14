@@ -11,7 +11,6 @@ import * as fs from 'fs';
 import { User } from '../../../models/user.model';
 import { Media } from '../../../models/media.model';
 
-import log from '../../../utils/log';
 import { string as randomString } from '../../../utils/randomizer';
 
 interface AssetFile {
@@ -30,7 +29,7 @@ const router = Router();
 
 router.post(`/`, (req, res) => {
     const form = new IncomingForm();
-    form.parse(req, (err, fields: { key: string }, files) => {
+    form.parse(req, (err, fields, files) => {
         if (err !== undefined && err !== null) {
             throw err;
         }
@@ -69,12 +68,10 @@ router.post(`/`, (req, res) => {
                 });
 
                 const fileName = `${media.name}${media.extension}`;
-                void media.save()
-                    .then(() => {
-                        void fs.rename(file.filepath, path.resolve(`/usr/share/sharex/i`, fileName), () => {
-                            res.status(200).send(`${req.get(`host`) === `i.warzon.io` ? `https://i.warzon.io` : config.domain}/i/${fileName}`);
-                        });
-                    }).catch(err => log(`red`, err));
+                void media.save();
+                void fs.rename(file.filepath, path.resolve(`/usr/share/sharex/i`, fileName), () => {
+                    res.status(200).send(`${req.get(`host`) === `i.warzon.io` ? `https://i.warzon.io` : config.domain}/i/${fileName}`);
+                });
             }
         });
     });

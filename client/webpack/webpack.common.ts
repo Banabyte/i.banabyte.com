@@ -1,5 +1,5 @@
 import * as Webpack from 'webpack';
-import WDS from 'webpack-dev-server';
+import type WDS from 'webpack-dev-server';
 
 import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
@@ -45,8 +45,7 @@ const config: Configuration = {
                     options: {
                         presets: [
                             [`@babel/preset-env`, { targets: `defaults` }]
-                        ],
-                        plugins: [`@babel/plugin-proposal-class-properties`]
+                        ]
                     }
                 },
                 exclude: /node_modules/

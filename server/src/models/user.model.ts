@@ -1,5 +1,5 @@
 import Mongoose from 'mongoose';
-import { Snowflake } from '@boatgame-io/id-utils';
+import { type Snowflake } from '@boatgame-io/id-utils';
 
 interface UserDoc extends Mongoose.Document {
     created: Date
@@ -35,5 +35,5 @@ const User = Mongoose.model<UserDoc>(`User`, UserSchema);
 
 export {
     User,
-    UserDoc
+    type UserDoc
 };

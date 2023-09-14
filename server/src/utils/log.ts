@@ -1,4 +1,3 @@
-
 /**
  * Log something to console.
  * @author DamienVesper

@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { type Router } from 'express';
 import * as path from 'path';
 
 import log from './log';
