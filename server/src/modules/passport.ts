@@ -14,6 +14,14 @@ import * as randomizer from '../utils/randomizer';
 
 import ExampleUserConfig from '../../../ShareX.json';
 
+passport.serializeUser((user, callback) => {
+    callback(null, user);
+});
+
+passport.deserializeUser((id, callback) => {
+    void User.findById(id).then(user => callback(null, user)).catch(err => callback(err, null));
+});
+
 const discordStrategy = new DiscordStrategy({
     clientID: (process.env.CLIENT_ID as string),
     clientSecret: (process.env.CLIENT_SECRET as string),
@@ -63,15 +71,5 @@ const discordStrategy = new DiscordStrategy({
 });
 
 passport.use(discordStrategy);
-
-passport.serializeUser((user, callback) => {
-    callback(null, user);
-});
-
-passport.deserializeUser((id, callback) => {
-    void User.findById(id, (err: unknown, user: typeof User) => {
-        callback(err, user);
-    });
-});
 
 export default passport;
