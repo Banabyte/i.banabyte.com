@@ -28,7 +28,7 @@ interface AssetFile {
 const router = Router();
 
 router.post(`/`, (req, res) => {
-    const form = new IncomingForm();
+    const form = new IncomingForm({ maxFileSize: 500 });
     form.parse(req, (err, fields, files) => {
         if (err !== undefined && err !== null) {
             throw err;
