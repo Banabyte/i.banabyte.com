@@ -57,7 +57,7 @@
     "express-session": "^1.17.3",
     "formidable": "^3.5.1",
     "helmet": "^7.0.0",
-    "mongodb": "^5.9.1",
+    "mongodb": "^6.0.0",
     "mongoose": "^8.0.0",
     "passport": "^0.6.0",
     "passport-discord": "^0.1.4",
